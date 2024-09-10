@@ -10,3 +10,8 @@ Message to the team.
 - Alongside, please research on CNN architecture.
 - Make sure to create your own repo with your own work. You can take help from this repo. From ChatGPT as long as you know what you are doing.
 - Best of Luck.
+
+For collaborators
+- Clone the project
+- Create a new branch.
+- If any changes suggested. Please do it and push it in a new branch. Avoid pushing it to the main branch
