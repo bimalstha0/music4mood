@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 import pickle as pkl
+import streamlit as st
 
 emotion_map = {0: 'Angry', 1: 'Digust', 2: 'Fear', 3: 'Happy', 4: 'Sad', 5: 'Surprise', 6: 'Neutral'}
 
@@ -29,9 +30,7 @@ def get_face_from_upload(img):
 
         # Resize the face to 48x48 pixels
         resized_face = cv2.resize(face, (48, 48))
-        cv2.waitKey(0)
         output.append(resized_face)
-    cv2.destroyAllWindows()
     return output
 
 def predict(image):
@@ -46,3 +45,14 @@ def predict(image):
     # Display the predicted emotion
     predicted_emotion = emotion_map[max_index]
     return predicted_emotion
+
+def predict_faces(faces, per_row=4):
+    n_faces = len(faces)
+    n_rows = (n_faces + per_row - 1) // per_row  # Calculate number of rows needed
+
+    for i in range(n_rows):
+        cols = st.columns(per_row)  # Create columns for this row
+        for j in range(per_row):
+            index = i * per_row + j
+            if index < n_faces:
+                cols[j].image(faces[index], caption=predict(faces[index]), use_column_width=True)
