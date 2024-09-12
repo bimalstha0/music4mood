@@ -1,7 +1,5 @@
 import streamlit as st
 import helper
-import cv2
-import numpy as np
 
 st.title('Face Recognition Demo')
 
@@ -10,25 +8,19 @@ st.text('Music4Mood is a recommender system which uses computer vision and CNN t
 st.selectbox('Which model would you like to use?',
              ('Custom Model v1.0','Emotion-FerPlus'))
 img_file_buffer = st.camera_input("Take a picture")
-
+image = None
 if img_file_buffer is not None:
-    # To read image file buffer with OpenCV:
-    bytes_data = img_file_buffer.getvalue()
-    cv2_img = cv2.imdecode(np.frombuffer(bytes_data, np.uint8), cv2.IMREAD_COLOR)
-
-    # Check the type of cv2_img:
-    # Should output: <class 'numpy.ndarray'>
-    st.write(type(cv2_img))
-
-    # Check the shape of cv2_img:
-    # Should output shape: (height, width, channels)
-    st.write(cv2_img.shape)
+    image = img_file_buffer
 
 uploaded_file = st.file_uploader("Upload an image",type=['png','jpg','jpeg','webp'])
 
+
 if uploaded_file:
+    image = uploaded_file
     st.image(uploaded_file)
-    faces = helper.get_face_from_upload(uploaded_file)
+    
+if image:
+    faces = helper.get_face_from_upload(image)
     if not faces:
         st.write('Oops! No faces detected.')
     else:
