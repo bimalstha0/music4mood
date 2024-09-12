@@ -5,7 +5,7 @@ import pickle as pkl
 emotion_map = {0: 'Angry', 1: 'Digust', 2: 'Fear', 3: 'Happy', 4: 'Sad', 5: 'Surprise', 6: 'Neutral'}
 
 
-model = pkl.load(open('../model/face_rec_model.pkl','rb'))
+model = pkl.load(open('model/face_rec_model.pkl','rb'))
 
 # Load the pre-trained Haar Cascade face detector from OpenCV
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
