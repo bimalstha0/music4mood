@@ -6,8 +6,8 @@ import streamlit as st
 emotion_map = {0 : 'Anger',1 : 'Happy', 2 : 'Sad',3 : 'Calm'}
 
 
-model = pkl.load(open('model/model_v2.pkl','rb'))
-model0 = pkl.load(open('model/model_v3.pkl','rb'))
+model = pkl.load(open('../model/model_v2.pkl','rb'))
+model0 = pkl.load(open('../model/model_v3.pkl','rb'))
 
 
 # Load the pre-trained Haar Cascade face detector from OpenCV
@@ -42,6 +42,7 @@ def predict(image):
 
     # Predict the emotion
     model1_pred = model.predict(resized_image)
+    model1_pred[0][2],model1_pred[0][3] = model1_pred[0][3],model1_pred[0][2]
     model2_pred = model0.predict(resized_image)
     emotion_prediction = (model1_pred + model2_pred) / 2
     max_index = np.argmax(emotion_prediction)
