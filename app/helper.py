@@ -3,10 +3,12 @@ import numpy as np
 import pickle as pkl
 import streamlit as st
 
-emotion_map = {0: 'Angry', 1: 'Digust', 2: 'Fear', 3: 'Happy', 4: 'Sad', 5: 'Surprise', 6: 'Neutral'}
+emotion_map = {0 : 'Anger',1 : 'Happy', 2 : 'Sad',3 : 'Calm'}
 
 
-model = pkl.load(open('model/face_rec_model.pkl','rb'))
+model = pkl.load(open('model/model_v2.pkl','rb'))
+model0 = pkl.load(open('model/model_v3.pkl','rb'))
+
 
 # Load the pre-trained Haar Cascade face detector from OpenCV
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
@@ -39,7 +41,9 @@ def predict(image):
     resized_image = resized_image.reshape(1, 48, 48, 1)
 
     # Predict the emotion
-    emotion_prediction = model.predict(resized_image)
+    model1_pred = model.predict(resized_image)
+    model2_pred = model0.predict(resized_image)
+    emotion_prediction = (model1_pred + model2_pred) / 2
     max_index = np.argmax(emotion_prediction)
 
     # Display the predicted emotion

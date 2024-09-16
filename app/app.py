@@ -5,8 +5,6 @@ st.title('Face Recognition Demo')
 
 
 st.write('Music4Mood is a recommender system which uses computer vision and CNN to detect face informations and use those emoions to recommend music to the user.')
-st.selectbox('Which model would you like to use?',
-             ('Custom Model v1.0','Emotion-FerPlus'))
 img_file_buffer = st.camera_input("Take a picture")
 image = None
 if img_file_buffer is not None:
