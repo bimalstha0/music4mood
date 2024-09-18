@@ -9,7 +9,7 @@ img_file_buffer = st.camera_input("Take a picture")
 image = None
 if img_file_buffer is not None:
     image = img_file_buffer
-
+st.write('Oh Handsome gUy')
 if not image:
     uploaded_file = st.file_uploader("Upload an image",type=['png','jpg','jpeg','webp'])
 
