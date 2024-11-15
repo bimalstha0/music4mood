@@ -15,3 +15,7 @@ For collaborators
 - Clone the project
 - Create a new branch.
 - If any changes suggested. Please do it and push it in a new branch. Avoid pushing it to the main branch
+
+
+
+INFO: https://music4mood.streamlit.app for demo. I will upload the pipeline structure in few days if you have difficulty streamlining the code
