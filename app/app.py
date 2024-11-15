@@ -3,7 +3,6 @@ import helper
 import pandas as pd
 import random
 import ast
-from youtubesearchpython import VideosSearch
 
 # Load and process music data to get top artists by total popularity
 music_data = pd.read_csv('final.csv')  # Assumes CSV has 'artists' and 'popularity' columns
@@ -94,15 +93,3 @@ if image:
             else:
                 st.write(f"No songs found for mood '{mood}' by the selected artists.")
 
-            if st.button("Search"):
-                if recommended_song:
-                    videos_search = VideosSearch(f'{recommended_song} by {','.join(recommended_song['artists'])}', limit = 1)
-                    results = videos_search.next()
-                    
-                    if results:
-                        video_url = results[0]['link']
-                        st.video(video_url)
-                    else:
-                        st.error("No results found!")
-                else:
-                    st.warning("Please enter a song name.")
