@@ -5,7 +5,7 @@ import random
 import ast
 
 # Load and process music data to get top artists by total popularity
-music_data = pd.read_csv('final.csv')  # Assumes CSV has 'artists' and 'popularity' columns
+music_data = pd.read_csv('final.csv') 
 
 # Convert 'artists' column from string representation of list to actual list, if needed
 music_data['artists'] = music_data['artists'].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
