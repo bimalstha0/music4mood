@@ -3,7 +3,7 @@ import numpy as np
 import pickle as pkl
 import streamlit as st
 
-emotion_map = {0 : 'Anger',1 : 'Happy', 2 : 'Sad',3 : 'Calm'}
+emotion_map = {0 : 'Angry',1 : 'Happy', 2 : 'Sad',3 : 'Calm'}
 
 
 model = pkl.load(open('model/model_v2.pkl','rb'))
